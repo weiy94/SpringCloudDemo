@@ -8,11 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 
 @Controller
 @Slf4j
+@ResponseBody
 public class PaymentController {
 
     @Resource
@@ -36,7 +38,7 @@ public class PaymentController {
         if(result!=null){
             return new CommonResult(200,"查询成功",result);
         }else{
-            return new CommonResult(444,"查询失败",null);
+            return new CommonResult(444,"查询失败，查询id："+id,null);
         }
     }
 }

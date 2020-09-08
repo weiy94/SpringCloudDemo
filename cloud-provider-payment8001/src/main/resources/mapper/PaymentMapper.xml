@@ -10,7 +10,7 @@
         <id column="serial" property="serial" javaType="java.lang.String" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <insert id="create" parameterType="Payment" useGeneratedKeys="true" keyProperty="id">
+    <insert id="create" parameterType="cn.weisoftware.springcloud.entities.Payment" useGeneratedKeys="true" keyProperty="id">
         insert into payment(serial) values (#{serial})
     </insert>
 
