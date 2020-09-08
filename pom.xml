@@ -8,9 +8,11 @@
   <groupId>cn.weisoftware.springcloud</groupId>
   <artifactId>cloud2020</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <!--打包方式-->
+    <modules>
+        <module>cloud-provider-payment8001</module>
+    </modules>
+    <!--打包方式maven的聚合，依赖-->
   <packaging>pom</packaging>
-
 
   <!--统一jar包和版本号的管理-->
   <properties>
