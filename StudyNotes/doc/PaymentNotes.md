@@ -30,3 +30,59 @@ PreparedStatement不允许在插入参数时改变SQL语句的逻辑结构。
 最后想说的是，对于mybatis 以及 sql 而言，每一个考点背后都是有一个深刻的思想存在的，应该好好的体会。这样才能真正的做到技术提升，成为技术大牛。
 
 ---
+#### `classpath:`和`classpath*:`的区别
++ src路径下的文件在编译后会放在WEB-INF/classes路径下，默认的classpath指这里。若直接放在WEB-INF下，ClassPathXmlApplicationContext获取不到
++ maven项目的resources目录就是默认的classpath
++ classpath即为java文件编译后class文件的编译目录，一般为WEB-INF\classes，src下的xml在编译时也会复制到classpath下
+````java
+ApplicationContext ctx = new ClassPathXmlApplicationContext("xxx.xml");
+ApplicationContext ctx = new FileSystemXmlApplicationContext("WebRoot/WEB-INF/xxx.xml");
+````
++ web.xml中classpath和classpath*的区别：
+    1. classpath只会到`WEB-INF/classpath`路径下找文件
+    2. classpath*不仅会在`WEB-INF/classpath`路径下找文件，还会到jar文件中（class路径）进行查找
+
++ classes含义：
+   1. 存放各种资源配置文件（init.properties;log4j.properties)
+   2. 存放模板文件（actionerror.ftl）
+   3. 存放class文件，对应开发项目的src目录编译文件
+   
+---
+#### 热部署
+1. 添加依赖
+````java
+<!--热部署-->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtool</artifactId>
+    <scope>runtime</scope>
+    <optional>true</optional>
+</dependency>
+````
+
+2. 添加插件
+````java
+<build>
+<!--工程的名字-->
+<finalName>cloud2020</finalName>
+<plugins>
+  <plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+    <version>2.2.2.RELEASE</version>
+    <configuration>
+      <fork>true</fork>
+      <addResources>true</addResources>
+    </configuration>
+  </plugin>
+</plugins>
+</build>
+````
+
+3. 开启
+快捷键`ctrl`+`alt`+`shift`+`/`
+
+![](../pic/1.png)
+![](../pic/2.png)
+
+4. 重启IDEA

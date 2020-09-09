@@ -95,6 +95,7 @@
   </dependencyManagement>
 
   <build>
+    <!--工程的名字-->
     <finalName>cloud2020</finalName>
     <plugins>
       <plugin>
