@@ -11,6 +11,7 @@
     <modules>
         <module>cloud-provider-payment8001</module>
       <module>StudyNotes</module>
+      <module>cloud-consumer-order80</module>
     </modules>
     <!--打包方式maven的聚合，依赖-->
   <packaging>pom</packaging>
